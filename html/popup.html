@@ -1,0 +1,104 @@
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Get Link</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/css.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../js/clipboard.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/js.js"></script>
+
+</head>
+<body>
+
+<div style="width: 333px;">
+    <div class="container mt-3">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="auto-tab" data-bs-toggle="pill" data-bs-target="#auto" type="button" role="tab" aria-controls="auto" aria-selected="true">Tự động</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="get-tab" data-bs-toggle="pill" data-bs-target="#get" type="button" role="tab" aria-controls="get" aria-selected="false">Get Link</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="auto" role="tabpanel" aria-labelledby="auto-tab">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div id="auto-msg" style="display: none">
+                        </div>
+                        <div class="mb-3">
+                            <label for="auto-sort" class="form-label">Liên kết rút gọn:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" value="" id="auto-sort"/>
+                                <button class="btn btn-outline-primary" type="button" id="cp-auto-sort" data-clipboard-target="#auto-sort">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3" style="display: none" id="auto-success">
+                            <label for="auto-url" class="form-label">Liên kết gốc:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" value="" id="auto-url"/>
+                                <button class="btn btn-outline-primary" type="button" data-clipboard-target="#auto-url">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary" style="display: none" id="auto-btn" target="_blank">Truy cập</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="get" role="tabpanel" aria-labelledby="get-tab">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div id="get-msg" style="display: none">
+                        </div>
+                        <div class="mb-3">
+                            <label for="get-sort" class="form-label">Liên kết rút gọn:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" value="" id="get-sort"/>
+                                <button class="btn btn-outline-primary" type="button" id="bypass">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/>
+                                        <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3" style="display: none" id="get-success">
+                            <label for="get-url" class="form-label">Liên kết gốc:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" value="" id="get-url"/>
+                                <button class="btn btn-outline-primary" type="button" data-clipboard-target="#get-url">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary" style="display: none" id="get-btn" target="_blank">Truy cập</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+</body>
+</html>
