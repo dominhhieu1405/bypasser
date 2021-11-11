@@ -1,0 +1,34 @@
+{
+  "author": "K6VN Team",
+  "name": "K6VN Director",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description" : "Getlink",
+  "icons": {
+    "16": "img/favicon.png",
+    "48": "img/favicon.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "img/favicon.png",
+      "38": "img/favicon.png"
+    },
+    "default_title": "Getlink",
+    "default_popup": "html/popup.html"
+  },
+  "background": {
+    "page": "html/none.html",
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "js/auto.js"
+      ],
+      "matches": [ "http://*/*", "https://*/*", "ftp://*/*", "file:///*" ],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [ "cookies", "http://*/*", "https://*/*", "tabs", "storage", "activeTab"]
+}
